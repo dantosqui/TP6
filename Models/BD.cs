@@ -1,8 +1,8 @@
 using System.Data.SqlClient;
 using Dapper;
-
 public class BD{
-    
+
+    private static string _connectionString=@"Server=localhost;DataBase=Elecciones2023;Trusted_Connection=True;";  
     public static void AgregarCandidato(Candidato can){
         string SQL="INSERT INTO Candidato(Nombre, Apellido, Foto, FechaNacimiento, Postulacion, IdPartido) VALUES (@pNombre, @pApellido, @pFoto, @pFechaNacimiento, @pPostulacion, @pIdPartido)";
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -19,4 +19,43 @@ public class BD{
         return registrosEliminados;
     }
 
+
+    public static Partido VerInfoPartido(int idPartido){
+        Partido MiPartido=null;
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql = "SELECT * FROM Partido WHERE IdPartido = @pIdPartido";
+            MiPartido = db.QueryFirstOrDefault<Partido>(sql, new {pIdPartido = idPartido});
+        }
+        return MiPartido;
+    }
+
+    public static Candidato VerInfoCandidato(int idCandidato){
+        Candidato MiCandidato=null;
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql = "SELECT * FROM Candidato WHERE IdCandidato = @pIdCandidato";
+            MiCandidato = db.QueryFirstOrDefault<Candidato>(sql, new {pIdCandidato = idCandidato});
+        }
+        return MiCandidato;
+    }
+
+  public static List<Partido> ListarPartidos(){
+        List<Partido> listaPartidos = null;
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql = "SELECT * FROM Partido";
+            listaPartidos = db.Query<Partido>(sql).ToList();
+        }
+        return listaPartidos;
+    }
+ 
+    public static List<Candidato> ListarCandidatos(int idPartido){
+        List<Candidato> listaCandis = null;
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql = "SELECT * FROM Partido WHERE IdPartido=@pIdPartido";
+            listaCandis = db.Query<Candidato>(sql, new {pIdPartido=idPartido}).ToList();
+        }
+        return listaCandis;
+    }
 }
+
+
+
