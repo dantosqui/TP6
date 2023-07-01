@@ -3,3 +3,14 @@
 }
 
 <h1>Elecciones 2023</h1>
+
+<h2>Partidos</h2>
+
+@foreach (var i in ViewBag.listaPartidos)
+{
+<div class="card">
+    <img src='@Url.Content("i.Logo")' alt="logo">
+    <p>@i.Nombre</p>
+    <a href='@Url.Action("DetallePartido", new {idPartido=i.IdPartido})'>Mas Informacion</a>
+</div>
+}
