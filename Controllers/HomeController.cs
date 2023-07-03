@@ -28,12 +28,24 @@ public class HomeController : Controller
         return View("FormularioCandidatos");
     }
 
+    public IActionResult AgregarPartido(){
+        
+
+        return View("FormularioPartidos");
+    }
+
+
     [HttpPost] public IActionResult GuardarCandidato(Candidato can, int idPartido){
         BD.AgregarCandidato(can);
         ViewBag.Partido = BD.VerInfoPartido(idPartido);
         ViewBag.ListaCandidatos = BD.ListarCandidatos(idPartido);
         ViewBag.idPartido=idPartido;
         return View("DetallePartido");
+    }
+
+    [HttpPost] public IActionResult GuardarPartido(Partido part){
+        BD.AgregarPartido(part);
+        return RedirectToAction("Index");
     }
 
     //zarekegorritos @gorritos.com
