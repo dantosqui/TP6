@@ -36,6 +36,9 @@ public class HomeController : Controller
 
 
     [HttpPost] public IActionResult GuardarCandidato(Candidato can, int idPartido){
+        if(BD.ListarCandidatos(idPartido).Any(Candidato => Candidato.DNI == can.DNI)){
+            Console.WriteLine("holaaaaa");
+        }
         BD.AgregarCandidato(can);
         ViewBag.Partido = BD.VerInfoPartido(idPartido);
         ViewBag.ListaCandidatos = BD.ListarCandidatos(idPartido);
