@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Agregar Candidato";
+}
+
+<form action='@Url.Action("GuardarCandidato")' method="post">
+<div id="bloqueFormulario">
+<input type="hidden" name="IdPartido" value='@ViewBag.idPartido'>
+<h1>Nombre</h1>
+<input type="text" name="Nombre" placeholder="Alfredo...">
+<h1>Apellido</h1>
+<input type="text" name="Apellido" placeholder="Rodriguez...">
+<h1>Fecha de nacimiento</h1>
+<input type="date" name="FechaNacimiento" placeholder="20-07-1986...">
+<h1>Foto</h1>
+<input type="text" name="Foto" placeholder="Url de la imagen...">
+<h1>Postulacion</h1>
+<input type="text" name="Postulacion" placeholder="El objetivo es...">
+<h1></h1>
+<input type="submit" value="Agregar">
+</div>
+</form>

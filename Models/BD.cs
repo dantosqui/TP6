@@ -4,17 +4,17 @@ public class BD{
 
     private static string _connectionString=@"Server=localhost;DataBase=Elecciones2023;Trusted_Connection=True;";  
     public static void AgregarCandidato(Candidato can){
-        string SQL="INSERT INTO Candidato(Nombre, Apellido, Foto, FechaNacimiento, Postulacion, IdPartido) VALUES (@pNombre, @pApellido, @pFoto, @pFechaNacimiento, @pPostulacion, @pIdPartido)";
+        string SQL="INSERT INTO Candidato(IdPartido, Nombre, Apellido, Foto, FechaNacimiento, Postulacion) VALUES (@pIdPartido, @pNombre, @pApellido, @pFoto, @pFechaNacimiento, @pPostulacion)";
         using(SqlConnection db = new SqlConnection(_connectionString)){
             db.Execute(SQL, new {pNombre=can.Nombre, pApellido=can.Apellido, pFoto=can.Foto, pFechaNacimiento=can.FechaNacimiento, pPostulacion=can.Postulacion, pIdPartido=can.IdPartido});
         }
     }
 
-    public static int EliminarCandidato(int IdCandidato){
+    public static int EliminarCandidato(int idCandidato){
         int registrosEliminados=0;
-        string sql ="DELETE FROM Candidato WHERE IdCandidato=@Candidato";
+        string sql ="DELETE FROM Candidato WHERE IdCandidato = @pIdCandidato;";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            registrosEliminados=db.Execute(sql, new {Candiato=IdCandidato});
+            registrosEliminados=db.Execute(sql, new {pIdCandidato=idCandidato});
         }
         return registrosEliminados;
     }
@@ -50,7 +50,7 @@ public class BD{
     public static List<Candidato> ListarCandidatos(int idPartido){
         List<Candidato> listaCandis = null;
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql = "SELECT * FROM Partido WHERE IdPartido=@pIdPartido";
+            string sql = "SELECT * FROM Candidato WHERE IdPartido=@pIdPartido";
             listaCandis = db.Query<Candidato>(sql, new {pIdPartido=idPartido}).ToList();
         }
         return listaCandis;

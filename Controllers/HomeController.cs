@@ -32,15 +32,17 @@ public class HomeController : Controller
         BD.AgregarCandidato(can);
         ViewBag.Partido = BD.VerInfoPartido(idPartido);
         ViewBag.ListaCandidatos = BD.ListarCandidatos(idPartido);
+        ViewBag.idPartido=idPartido;
         return View("DetallePartido");
     }
 
     //zarekegorritos @gorritos.com
 
     public IActionResult EliminarCandidato(int idCandidato, int idPartido){
-        BD.EliminarCandidato(idCandidato);
-
-        return RedirectToAction("DetallePartido(idPartido)");
+        int registros=BD.EliminarCandidato(idCandidato);
+        ViewBag.Partido = BD.VerInfoPartido(idPartido);
+        ViewBag.ListaCandidatos = BD.ListarCandidatos(idPartido);
+        return View("DetallePartido");
     }
 
     public IActionResult Elecciones(){

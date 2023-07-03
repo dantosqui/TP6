@@ -3,19 +3,21 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - TPXX - Apellido</title>
+        <title>@ViewData["Title"] - TP6 - partidospoliticos</title>
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </head>
     <body>
-        <header style="position:fixed; top: 0; margin: 10px 0px 20px 0px;">
+        <header style="position:absolute; top: 0; margin: 10px 0px 20px 0px;">
             Encabezado TP XX
             <nav>
                 <ul>
                     <li>
-                        <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Argentina_%281840%29.svg/1200px-Flag_of_Argentina_%281840%29.svg.png>
+                        <a href='@Url.Action("Index")'>
+                            <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Argentina_%281840%29.svg/1200px-Flag_of_Argentina_%281840%29.svg.png width="5%">
+                        </a>
                     </li>
                     <li>
-                        <a href='@Url.Action("Elecciones")'>Creditos</a>
+                        <a href='@Url.Action("Elecciones")'>Elecciones</a>
                     </li>
                     <li>
                         <a href='@Url.Action("Creditos")'>Creditos</a>
@@ -28,7 +30,7 @@
         </div>
 
         <footer>
-                &copy; @DateTime.Now.Year - Taller de Programación - TPXX
+                &copy; @DateTime.Now.Year - ODIO EL FOOTER ME TAPA TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         </footer>
         <script src="~/js/site.js" asp-append-version="true"></script>
         @await RenderSectionAsync("Scripts", required: false)

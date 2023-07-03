@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Candidato";
+}
+
+
+
+<h1>Informacion del candidato</h1>
+<p>Nombre: @ViewBag.DetalleCandidato.Nombre </p> 
+<p>Apellido: @ViewBag.DetalleCandidato.Apellido</p> 
+<p>Fecha de nacimiento: @ViewBag.DetalleCandidato.FechaNacimiento</p> 
+<p>Foto: <img src="@ViewBag.DetalleCandidato.Foto" alt="foto"></p> 
+<p>Postulacion: @ViewBag.DetalleCandidato.Postulacion</p> 
