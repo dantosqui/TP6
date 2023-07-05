@@ -6,13 +6,22 @@
 
 <h2>Partidos</h2>
 
-@foreach (var i in ViewBag.listaPartidos)
-{
-<div class="card">
-    <img src='@Url.Content("i.Logo")' alt="logo">
-    <p>@i.Nombre</p>
-    <a href='@Url.Action("DetallePartido", new {idPartido=i.IdPartido})'>Mas Informacion</a>
-</div>
-}
+<div class="contenedorCards">
 
-<a href='@Url.Action("AgregarPartido")'>Agregar partido</a>
+@foreach (var i in ViewBag.listaPartidos)
+    {
+    <div class="card">
+        <img src='@i.Logo' alt="logo">
+        <div class="contenedorTextoCards">
+            <p>@i.Nombre</p>
+            <div class="contenedorlink">
+                <a href='@Url.Action("DetallePartido", new {idPartido=i.IdPartido})'>Mas Informacion</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<div id="contenedoragregar">
+<a href='@Url.Action("AgregarPartido")' id="agregar">Agregar partido</a>
+</div>
