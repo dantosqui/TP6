@@ -25,6 +25,14 @@ public class BD{
         }
         return registrosEliminados;
     }
+    public static int EliminarPartido(int idPartido){
+        int registrosEliminados=0;
+        string sql=" DELETE FROM Candidato WHERE IdPartido=@pIdPartido; DELETE FROM Partido Where IdPartido=@pIdPartido;";
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            registrosEliminados=db.Execute(sql,new {pIdPartido=idPartido});
+        }
+        return registrosEliminados;
+    }
 
 
     public static Partido VerInfoPartido(int idPartido){

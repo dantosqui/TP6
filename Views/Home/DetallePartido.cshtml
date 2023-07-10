@@ -3,25 +3,45 @@
 }
 
 <h1>@ViewBag.Partido.Nombre</h1>
-<img src="@ViewBag.Partido.Logo" alt="logo">
-
+<div class="centrar">
+    <img src="@ViewBag.Partido.Logo" alt="logo">
+</div>
 <h2>Informacion del partido</h2>
-<p>Sitio Web: </p> <a href="#">@ViewBag.Partido.SitioWeb</a>
-<p>Fecha de fundacion: @ViewBag.Partido.FechaFundacion.ToShortDateString()</p> 
+<p>Sitio Web: </p>
+<div class="centrar"><a href="#">@ViewBag.Partido.SitioWeb</a></div>
+<p>Fecha de fundacion: @ViewBag.Partido.FechaFundacion.ToShortDateString()</p>
 <h2>Legisladores</h2>
 <p>@ViewBag.Partido.CantidadDiputados Diputados</p>
 <p>@ViewBag.Partido.CantidadSenadores Senadores</p>
 
+<h1>Candidatos</h1>
+<div class="contenedorCards">
+    @foreach (var candidato in ViewBag.ListaCandidatos)
+    {
+        <div class="card">
+            <a href='@Url.Action("DetalleCandidato", new {idCandidato=candidato.IdCandidato})'>
+                <div class="contenedorTextoCards">
+                    <img src='@candidato.Foto' alt="foto del candidato">
+                </div>
+            </a>
+            <a href='@Url.Action("DetalleCandidato", new {idCandidato=candidato.IdCandidato})'>
+                <div class="contenedorTextoCards">
+                    <p>@candidato.Nombre @candidato.Apellido</p>
+                </div>
+            </a>
+            <div class="contenedorTextoCards">
 
-@foreach (var candidato in ViewBag.ListaCandidatos)
-{
-    <div class="card">
-        <img src='@candidato.Foto' alt="foto del candidato">
-        <p class="cardtexto">@candidato.Nombre @candidato.Apellido</p>
-        <a href='@Url.Action("DetalleCandidato", new {idCandidato=candidato.IdCandidato})'>Mas Informacion</a>
-        <a href='@Url.Action("EliminarCandidato", new {idCandidato=candidato.IdCandidato, idPartido=candidato.IdPartido})'>Eliminar</a>
-    </div>
-}
+                <div class="contenedorlink">
+                    <a
+                        href='@Url.Action("EliminarCandidato", new {idCandidato=candidato.IdCandidato, idPartido=candidato.IdPartido})'>Eliminar</a>
+                </div>
 
+            </div>
 
-<a href='@Url.Action("AgregarCandidato", new {idPartido=ViewBag.Partido.IdPartido})'>Agregar Un Candidato</a>
+        </div>
+    }
+</div>
+<div id="contenedoragregar">
+    <a id="agregar" href='@Url.Action("AgregarCandidato", new {idPartido=ViewBag.Partido.IdPartido})'>Agregar Un
+        Candidato</a>
+</div>

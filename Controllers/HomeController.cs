@@ -59,6 +59,11 @@ public class HomeController : Controller
         ViewBag.ListaCandidatos = BD.ListarCandidatos(idPartido);
         return View("DetallePartido");
     }
+    public IActionResult EliminarPartido(int idPartido){
+        int registros=BD.EliminarPartido(idPartido);
+        ViewBag.listaPartidos=BD.ListarPartidos();
+        return View("Index");
+    }
 
     public IActionResult Elecciones(){
         return View();

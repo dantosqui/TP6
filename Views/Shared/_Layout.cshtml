@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </head>
     <body>
+    <header>
+    <p>Elecciones 2023</p>
             <nav>
                 <ul>
                         <li>
@@ -16,14 +18,16 @@
                             </a>
                             </div>
                         </li>
+                        
                     <li>
-                        <a href='@Url.Action("Elecciones")'>Elecciones</a>
+                        <a href='@Url.Action("Elecciones")' class="boton">Elecciones</a>
                     </li>
                     <li>
-                        <a href='@Url.Action("Creditos")'>Creditos</a>
+                        <a href='@Url.Action("Creditos")' class="boton">Creditos</a>
                     </li>
                 </ul>
             </nav>
+            </header>
         <div style="padding:20px 10px 0px 10px;">
             @RenderBody()
         </div>
