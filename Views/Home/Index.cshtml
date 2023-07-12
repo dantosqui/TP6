@@ -11,6 +11,7 @@
     @foreach (var i in ViewBag.listaPartidos)
     {
         <div class="card">
+        
             <a href='@Url.Action("DetallePartido", new {idPartido=i.IdPartido})' style="height:100%;">
                 <div class="contenedorTextoCards">
                     <img src='@i.Logo' alt="logo">
@@ -24,15 +25,16 @@
                 </div>
             </a>
             <div class="contenedorTextoCards">
-                <div class="contenedorlink">
-
-                    <a href='@Url.Action("EliminarPartido", new {idPartido=i.IdPartido})'>Eliminar</a>
+                <a href='@Url.Action("EliminarPartido", new {idPartido=i.IdPartido})'>
+                <div class="contenedorlink link">
+                    Eliminar
                 </div>
+                </a>
             </div>
         </div>
     }
 </div>
 
 <div id="contenedoragregar">
-    <a href='@Url.Action("AgregarPartido")' id="agregar">Agregar partido</a>
+    <a href='@Url.Action("AgregarPartido")' id="agregar" class="link">Agregar partido</a>
 </div>

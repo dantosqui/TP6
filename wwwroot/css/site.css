@@ -52,9 +52,10 @@ nav ul li img{
 }
 
 body {
-  margin: 75px 0px 0vw 0px;
+  margin: 75px 0px 2.5vw 0px;
   background-color: #f3faff;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: large;
 }
 p{
   text-align: center;
@@ -127,7 +128,7 @@ a{
   background-color: rgb(226, 190, 71);
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
-  color: black;
+  color: white;
 }
 
 #contenedoragregar{
@@ -144,6 +145,15 @@ a{
   padding: 5px 10% 5px 10%;
   border-radius: 10px;
   margin-bottom: 50px;
+}
+#agregar:hover{
+  background-color: rgb(163, 137, 51);
+}
+.link, #agregar{
+  transition: background-color .5s ease;
+}
+.link:hover{
+  background-color: rgb(163, 137, 51);
 }
 
 input{
@@ -195,12 +205,25 @@ a div p{
   color: black;
 }
 
-  .centrar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .centrar img{
-    width: 20%;
-    height: auto;
-  }
+.centrar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centrar img{
+  width: 20%;
+  height: auto;
+}
+
+#info{
+  text-align: center;
+}
+#info img{
+  height: 20%;
+  max-width: 30%;
+  transition: all .3s ease;
+}
+#info img:hover{
+  box-shadow: 0 0 20px rgba(33,33,33,.2);
+}
